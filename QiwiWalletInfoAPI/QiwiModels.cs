@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace QiwiModels
 {
+    /// <summary>
+    /// Тип проведённой операции
+    /// </summary>
     public enum PaymentOperationType
     {
         ALL,
@@ -11,11 +14,17 @@ namespace QiwiModels
         OUT,
         QIWI_CARD
     }
+    /// <summary>
+    /// Формат чека
+    /// </summary>
     public enum ChequeImageFormat
     {
         JPEG,
         PDF
     }
+    /// <summary>
+    /// Класс, описывающий сущность "Деньги" (кол-во, валюта)
+    /// </summary>
     public class Money
     {
         [JsonProperty("amount")]
@@ -23,11 +32,29 @@ namespace QiwiModels
         [JsonProperty("currency")]
         public string Currency { get; set; }
     }
+    /// <summary>
+    /// Описание общиго прихода денежных средств ("Деньги")
+    /// </summary>
     public class IncomingTotal : Money { }
+    /// <summary>
+    /// Описание суммарного оттока денежных средств ("Деньги")
+    /// </summary>
     public class OutgoingTotal : Money { }
+    /// <summary>
+    /// Сумма денежных средств при проведении транзакции (до вычета комиссии) ("Деньги")
+    /// </summary>
     public class Sum : Money { }
+    /// <summary>
+    /// Комиссия при проведении транзакции ("Деньги")
+    /// </summary>
     public class Commission : Money { }
+    /// <summary>
+    /// Итоговая сумма при проведении транзакции (с вычетом комиссии) ("Деньги")
+    /// </summary>
     public class Total : Money { }
+    /// <summary>
+    /// Баланс ("Деньги")
+    /// </summary>
     public class Balance : Money { }
     public class Type
     {
@@ -36,6 +63,9 @@ namespace QiwiModels
         [JsonProperty("title")]
         public string Title { get; set; }
     }
+    /// <summary>
+    /// Данные аккаунта
+    /// </summary>
     public class Account
     {
         [JsonProperty("alias")]
@@ -55,20 +85,32 @@ namespace QiwiModels
         [JsonProperty("currency")]
         public long Currency { get; set; }
     }
+    /// <summary>
+    /// Данные о балансе QIWI кошелька
+    /// </summary>
     public class WalletBalance
     {
         [JsonProperty("accounts")]
         public List<Account> Accounts { get; set; }
     }
+    /// <summary>
+    /// Электронная почта для отправки чека
+    /// </summary>
     public class MailForCheque
     {
         [JsonProperty("email")]
         public string Email { get; set; }
     }
+    /// <summary>
+    /// [НЕ ИСПОЛЬЗОВАТЬ] Используется для обработки ответа сервера на запрос на получение чека проведённой транзакции
+    /// </summary>
     public class ChequeImage
     {
         public List<string> MyArray { get; set; }
     }
+    /// <summary>
+    /// Статистика проведённых операций
+    /// </summary>
     public class PaymentsStats
     {
         [JsonProperty("incomingTotal")]
@@ -76,6 +118,9 @@ namespace QiwiModels
         [JsonProperty("outgoingTotal")]
         public List<OutgoingTotal> OutgoingTotal { get; set; }
     }
+    /// <summary>
+    /// Данные о провайдере транзакции
+    /// </summary>
     public class Provider
     {
         [JsonProperty("id")]
@@ -95,6 +140,9 @@ namespace QiwiModels
         [JsonProperty("extras")]
         public List<object> Extras { get; set; }
     }
+    /// <summary>
+    /// Данные об источнике транзакции
+    /// </summary>
     public class Source
     {
         [JsonProperty("id")]
@@ -114,6 +162,9 @@ namespace QiwiModels
         [JsonProperty("extras")]
         public List<object> Extras { get; set; }
     }
+    /// <summary>
+    /// Данные о транзакции
+    /// </summary>
     public class Transaction
     {
         [JsonProperty("txnId")]
@@ -165,6 +216,9 @@ namespace QiwiModels
         [JsonProperty("regularPaymentEnabled")]
         public bool RegularPaymentEnabled { get; set; }
     }
+    /// <summary>
+    /// Данные о проведённых операциях
+    /// </summary>
     public class Payments
     {
         [JsonProperty("data")]
@@ -176,6 +230,9 @@ namespace QiwiModels
         [JsonProperty("nextTxnDate")]
         public DateTime NextTxnDate { get; set; }
     }
+    /// <summary>
+    /// Идентификационные данные персоны
+    /// </summary>
     public class IdentificationData
     {
         [JsonProperty("birthDate")]
@@ -197,6 +254,9 @@ namespace QiwiModels
         [JsonProperty("type")]
         public string Type { get; set; }
     }
+    /// <summary>
+    /// Данные об использовании ПИН-кода в мобильном приложении
+    /// </summary>
     public class MobilePinInfo
     {
         [JsonProperty("lastMobilePinChange")]
@@ -206,6 +266,9 @@ namespace QiwiModels
         [JsonProperty("nextMobilePinChange")]
         public DateTime NextMobilePinChange { get; set; }
     }
+    /// <summary>
+    /// Данные об использовании пароля кошелька
+    /// </summary>
     public class PassInfo
     {
         [JsonProperty("lastPassChange")]
@@ -215,11 +278,17 @@ namespace QiwiModels
         [JsonProperty("passwordUsed")]
         public bool PasswordUsed { get; set; }
     }
+    /// <summary>
+    /// Данные об использовании ПИН-кода
+    /// </summary>
     public class PinInfo
     {
         [JsonProperty("pinUsed")]
         public bool PinUsed { get; set; }
     }
+    /// <summary>
+    /// Информация об авторизации
+    /// </summary>
     public class AuthInfo
     {
         [JsonProperty("boundEmail")]
@@ -239,6 +308,9 @@ namespace QiwiModels
         [JsonProperty("registrationDate")]
         public DateTime RegistrationDate { get; set; }
     }
+    /// <summary>
+    /// Информация об уровне идентификации
+    /// </summary>
     public class IdentificationInfo
     {
         [JsonProperty("bankAlias")]
@@ -246,6 +318,9 @@ namespace QiwiModels
         [JsonProperty("identificationLevel")]
         public string IdentificationLevel { get; set; }
     }
+    /// <summary>
+    /// Информация о контракте
+    /// </summary>
     public class ContractInfo
     {
         [JsonProperty("blocked")]
@@ -259,6 +334,9 @@ namespace QiwiModels
         [JsonProperty("identificationInfo")]
         public List<IdentificationInfo> IdentificationInfo { get; set; }
     }
+    /// <summary>
+    /// Информация о персоне, владеющей кошельком QIWI
+    /// </summary>
     public class UserInfo
     {
         [JsonProperty("defaultPayCurrency")]
@@ -278,6 +356,9 @@ namespace QiwiModels
         [JsonProperty("promoEnabled")]
         public object PromoEnabled { get; set; }
     }
+    /// <summary>
+    /// Информация о кошельке QIWI
+    /// </summary>
     public class QiwiWalletProfile
     {
         [JsonProperty("authInfo")]
