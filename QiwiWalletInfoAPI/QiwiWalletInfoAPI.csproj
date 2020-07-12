@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>liquiddeath13</Authors>
+    <Company>Blueberry Cats</Company>
+    <Product>QiwiWalletInfoAPI Library</Product>
+    <Description>Обёртка над API QIWI для получения информации по киви кошельку физического лица (пользователя сервиса). Все соображения по развитию проекта, вопросы, гнев и запросы помощи присылать в личные сообщения --&gt; https://vk.com/v0lk0d4v</Description>
+    <Copyright>liquiddeath13</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>
